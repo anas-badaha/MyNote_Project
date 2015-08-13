@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/notes"
+    android:weightSum="1">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Show All Notes"
+        android:id="@+id/button2"
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="0dp"
+        android:height="120dp"
+        android:textColor="#fffffe14"
+        android:onClick="ShowNote"
+        android:drawableLeft="@drawable/images2"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:icon="@mipmap/ic_launcher"
+        android:text="Create a Note"
+        android:id="@+id/button3"
+        android:layout_marginTop="150dp"
+        android:height="20dp"
+        android:textColor="#fffcff25"
+        android:layout_marginLeft="0dp"
+        android:onClick="secondactivity"
+        android:drawableLeft="@drawable/images"
+        android:width = "20dp"
+        android:scaleType="fitXY"/>
+    />
+
+</LinearLayout>
