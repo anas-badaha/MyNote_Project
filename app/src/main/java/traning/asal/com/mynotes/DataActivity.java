@@ -1,24 +1,24 @@
 package traning.asal.com.mynotes;
 
 import android.app.Activity;
-import android.app.TaskStackBuilder;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 
-
-public class Data_Activity extends Activity {
+public class DataActivity extends Activity {
    //ArrayList<String> lstNotes = new ArrayList<>();
     long ID;
     String sub = null;
     String cont=null;
+    ListView listContent;
+
     //String sub;
 
 
@@ -32,19 +32,32 @@ public class Data_Activity extends Activity {
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
             if(extras == null) {
-                sub= ("There is no data to show ");
-                cont= ("There is no data to show ");
+                sub =extras.getString("subject");
+                cont=extras.getString("content");
 
             } else {
                sub =extras.getString("subject");
                cont=extras.getString("content");
                 ID=extras.getLong("ID");
                // lstNotes=extras.getSerializableExtra("lstNotes");
-            }
+        }
         }
         ((TextView)findViewById(R.id.txtVo)).setText(sub);
         ((TextView)findViewById(R.id.txtV1)).setText(cont);
-
+       // Button button= (Button) findViewById(R.id.delete);
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Delete();
+//            }
+//        });
+//        Button button2= (Button) findViewById(R.id.edit);
+//        button2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                UpDate();
+//            }
+//        });
     }
 
 
@@ -70,15 +83,14 @@ public class Data_Activity extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
-    public void Delete(View view){
+    public void Delete(){
         new  DatabaseHandler(this).deleteSingleRow(ID);
-        startActivity(new Intent(Data_Activity.this, Show_Note.class));
+        startActivity(new Intent(DataActivity.this,ShowNote.class));
         this.finish();
-
     }
 
-    public void UpDate(View view){
-        Intent intent = new Intent(Data_Activity.this, Edit.class);
+    public void UpDate(){
+        Intent intent = new Intent(DataActivity.this, Edit.class);
         intent.putExtra("subject",sub);
         intent.putExtra("content", cont);
         intent.putExtra("ID",ID);

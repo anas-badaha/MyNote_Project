@@ -6,4 +6,7 @@
     <string name="title_activity_show__note">Show_Note</string>
     <string name="title_activity_data_">Data_Activity</string>
     <string name="title_activity_edit">Edit</string>
+    <string name="title_activity_log_in">LogIn</string>
+    <string name="title_activity_register">Register</string>
+    <string name="title_activity_setting">Setting</string>
 </resources>

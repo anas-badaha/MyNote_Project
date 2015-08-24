@@ -14,8 +14,10 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Write Your Notes :"
         android:id="@+id/textView1"
-        android:layout_marginTop="10dp"
-        />
+        android:layout_marginTop="67dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -23,35 +25,35 @@
         android:inputType="textMultiLine|textCapSentences|textAutoCorrect"
         android:ems="10"
         android:id="@+id/Text"
-        android:layout_marginTop="150dp"
-        android:layout_alignParentTop="true"
+        android:hint="Write Your Note Here."
+        android:layout_below="@+id/Subject"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:hint="Write Your Note Here." />
+        android:layout_marginTop="30dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Save"
         android:id="@+id/button"
-        android:layout_marginTop="300dp"
+        android:onClick="addnote"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginLeft="200dp"
-        android:onClick="addnote"
-        />
+        android:layout_alignRight="@+id/Subject"
+        android:layout_alignEnd="@+id/Subject"
+        android:background="#22c4c4c4" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/Subject"
-        android:layout_below="@+id/textView1"
-        android:layout_alignLeft="@+id/Text"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="0dp"
         android:hint="Subject "
 
-        android:inputType="textCapSentences|textAutoCorrect"/>
+        android:inputType="textCapSentences|textAutoCorrect"
+        android:layout_below="@+id/textView1"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp" />
 
 </RelativeLayout>

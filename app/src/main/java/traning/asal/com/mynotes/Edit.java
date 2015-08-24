@@ -20,6 +20,7 @@ public class Edit extends Activity {
     String contEdit=null;
     EditText Subject;
     EditText Text;
+    Button button;
     Context context=this;
 
     @Override
@@ -42,13 +43,19 @@ public class Edit extends Activity {
 
         Subject = (EditText) findViewById(R.id.Subject);
         Text = (EditText) findViewById(R.id.Text);
+        button=(Button) findViewById(R.id.button);
         Subject.setText(subEdit);
         Text.setText(contEdit);
         final Note objNote=new Note();
         objNote.setID(ID);
 
 
-
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                save();
+            }
+        });
 
     }
 
@@ -73,18 +80,23 @@ public class Edit extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
-       public void save (View view){
+       public void save (){
         final Note objNote=new Note();
            objNote.setID(ID);
            objNote.setSubject(Subject.getText().toString());
            objNote.setText(Text.getText().toString());
-           if(Text.getText().toString().equals("null")){
+           if((Text.getText().toString()).equals("null")){
                Toast.makeText(getBaseContext(), "Write Your Note", Toast.LENGTH_LONG).show();
            }else {
+               Intent intent = new Intent(Edit.this, DataActivity.class);
+               String sub=Subject.getText().toString();
+               String cont=Text.getText().toString();
+               intent.putExtra("subject",sub);
+               intent.putExtra("content", cont);
                DatabaseHandler db = new DatabaseHandler(context);
                db.upDateByID(objNote);
                Toast.makeText(getBaseContext(), "Data upadted", Toast.LENGTH_LONG).show();
-               startActivity(new Intent(Edit.this, MainPage.class));
+               startActivity(intent);
 
                this.finish();
            }

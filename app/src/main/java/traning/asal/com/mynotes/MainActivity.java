@@ -41,20 +41,26 @@ public class MainActivity extends Activity {
         }
 
 
-    public void addnote(View view)
-    {
-        String subject=Subject.getText().toString();
-        String text= Text.getText().toString();
+    public void addnote(View view) {
+        String subject = Subject.getText().toString();
+        subject=subject.trim();
+        String text = Text.getText().toString();
+        text=text.trim();
         Note objNote = new Note();
         objNote.setSubject(subject);
         objNote.setText(text);
-        dbHelper=new DatabaseHandler(context);
-        //sqLiteDatabase=dbHelper.getWritableDatabase();
-        dbHelper.createNote(objNote);
-        Toast.makeText(getBaseContext(),"Data saved",Toast.LENGTH_LONG).show();
-        startActivity(new Intent(MainActivity.this, MainPage.class));
-        dbHelper.close();
-        this.finish();
+        if (objNote.getText().equals("") || objNote.getSubject().equals("")) {
+            Toast.makeText(getBaseContext(), "Write Your Note", Toast.LENGTH_LONG).show();
+
+        } else {
+            dbHelper = new DatabaseHandler(context);
+            //sqLiteDatabase=dbHelper.getWritableDatabase();
+            dbHelper.createNote(objNote);
+            Toast.makeText(getBaseContext(), "Data saved", Toast.LENGTH_LONG).show();
+            startActivity(new Intent(MainActivity.this, ShowNote.class));
+            dbHelper.close();
+            this.finish();
+        }
     }
 
    // public void newnote(View view) {
